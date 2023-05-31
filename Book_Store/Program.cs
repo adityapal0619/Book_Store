@@ -12,6 +12,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
 builder.Services.AddScoped<IGenreService, GenreServices>();
+builder.Services.AddScoped<IAuthorService, AuthorServices>();
 var app = builder.Build();
 
 
@@ -33,5 +34,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=genre}/{action=Add}/{id?}");
-
+//app.MapControllerRoute(
+//       name: "Author",
+//      pattern: "{controller=Author}/{action=AddAuthor}/{id?}");
 app.Run();
